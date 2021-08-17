@@ -1,0 +1,68 @@
+>>> Git Github: Controle e compartilhe seu código. <<<
+28/12/2020
+
+### VCS: Sistema de Controle de Versão ###
+*CVS
+*SVN
+*Mercurial
+*GIT
+
+Comando: git config
+Antes de qualquer interação com o git, você precisa informar quem é você para que ele armazene corretamente os dados do autor de cada uma das alterações no código.
+git config --local user.name "Seu nome aqui"
+git config --local user.email "seu@email.aqui"
+
+
+Comando: git init
+inicializa um repositório no diretório em que o comando for executado
+
+Comando: git status 
+vai aparecer o status do nosso repositório
+
+use "git add <file>" para incluir
+para salvar um arquivo no git ele precisa ser monitorado pelo git
+Comando: git add index.html
+
+para adicionar todos os arquivos
+Comando: git add .
+
+COMMIT
+Comando: git commit -m "descrição do commit"
+
+CONTEÚDO
+Fundamentos de Git - Gravando Alterações em Seu Repositório
+https://git-scm.com/book/pt-br/v2/Fundamentos-de-Git-Gravando-Altera%C3%A7%C3%B5es-em-Seu-Reposit%C3%B3rio
+
+Verificar o histórico de alterações, cada mensagem de commits feitos
+Comando: git log
+OU
+Comando: git log --oneline 
+
+Comando: git init --bare
+Com este comando nós criamos um repositório que não terá a working tree, ou seja, não conterá uma cópia dos nossos arquivos. Como o repositório servirá apenas como servidor, para que outros membros da equipe sincronizem seus trabalhos, poupamos espaço de armazenamento desta forma.
+
+Comando: git remote add nome-repositorio caminho/para/o/repositorio
+Antes de sincronizar as nossas mudanças no código com algum repositório remoto, precisamos antes adicioná-lo ao nosso repositório local.
+Comando: git remote -v
+
+Comando: git clone
+traz um repositório remoto para o nosso computador, criando um repositório local.
+
+Comando: git push [repositorio] master
+enviar as alterações para o repositorio remoto
+
+Comando: git pull [repositorio] master
+para trazer os dados que estiverem no repositorio remoto
+
+
+O merge junta os trabalhos e gera um merge commit. O rebase aplica os commits de outra branch na branch atual.
+
+
+Crtl Z num commit
+Comando: git log --oneline
+vai copiar o numero e escrever o Comando: git revert [numero]
+
+
+Com o git checkout nós desfazemos uma alteração que ainda não foi adicionada ao index ou stage, ou seja, antes do git add. Depois de adicionar com git add, para desfazer uma alteração, precisamos tirá-la deste estado, com git reset. Agora, se já realizamos o commit, o comando git revert pode nos salvar.
+
+Que é possível visualizar quais alterações foram realizadas em cada arquivo, com o comando git diff;

@@ -1,0 +1,199 @@
+>>> React: Entendendo como a biblioteca funciona <<<
+12/01/2021
+
+React é uma biblioteca JavaScript para criar interfaces de usuário.
+Foi criada pelo Facebook para fazer renderização e layouts mais complexos dentro da web.
+
+react = É UMA LIB (que faz a interface gráfica)
+React = ecossistema
+
+O React usa a div="root" no arquivo index.js,
+inserindo os elementos declarados em JSX do arquivo App.js.
+
+O React utiliza esse arquivo index.js para inserir
+todo o conteúdo JSX do App.js no index.html,
+tornando possível que esse template seja exibido no navegador.
+
+Ele faz isso através de um método interno do ReactDOM chamado render()
+(que também utiliza JSX ao passar < App /> como parâmetro).
+
+______________________________________________
+01. CRIANDO O PROJETO
+
+#Criando o projeto
+
+O npm é um gerenciador de pacotes do node js. É o repositório onde guarda e compartilha pacotes de JavaScript.
+O npx é o executador de pacotes. Invés de baixar o pacote na minha máquina, o npx vai buscar o pacote no repositório npm, vai baixar as dependências que ele precisa, executar e depois limpa e deixa só o resultado final.
+o nvm ajuda a gente a gerenciar versões do node.
+
+Primeiramente, baixar o node js, a versão usada nesse curso é a 12.17.0
+
+Gerenciadores de versão:
+nvm-windows
+Embora o windows-nvm seja atualmente o gerenciador de versão mais popular para o node, existem alternativas a serem consideradas:
+nvs (Node Version Switcher) é uma nvm alternativa de plataforma cruzada com a capacidade de integração com o VS Code .
+
+Volta é um novo gerente de versão da equipe do LinkedIn que afirma maior velocidade e suporte multiplataforma.
+
+
+Apaguei o node;
+Usei os comandos:
+
+npm uninstall create-react-app
+npm cache clean --force
+npm cache verify
+
+instalei novamente na versão 12.17.0
+
+
+Criando a pasta e o projeto que se chamará ceep:
+npx create-react-app ceep
+
+
+
+#Limpando o projeto
+
+Apagar o código que tem em App.js
+
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+
+Vai apagar também os asquivos:
+App.css
+logo.svg
+serciveWorker.js
+setupTest.js
+
+______________________________________________
+02. COMPONENTIZANDO O SISTEMA
+
+import React, { Component } from "react";
+
+
+
+Como integrar o Javascript no meio do seu JSX:
+Tudo que estiver entre {} dentro do JSX será interpretado como JS;
+Não é tudo do JS que pode vir dentro;
+o FOR por exemplo não funciona pra fazer loop...
+
+
+Componentes podem ter filhos que são componentes;
+
+
+______________________________________________
+03. ESTILIZANDO COMPONENTES
+
+Cada filho de uma lista precisa ter uma chave única
+Propriedade Key é um identificador único;
+
+#Estilo é feito em um arquivo css a parte
+
+#Conflito de nomes
+
+
+O className o React converte essa propriedade para o class do HTML
+
+
+#Organizando o projeto
+
+
+______________________________________________
+04. LIDANDO COM EVENTOS E PROPRIEDADES
+
+Normalmente o onChange é disparado por select, radio e checkbox.
+
+Já o oninput pode ser disparado por input e `textarea.
+
+Sobre quando cada um ocorre, basicamente é:
+
+onchange: Ocorre quando a seleção, estado checado ou o conteúdo de um elemento tem sido mudado, em alguns casos, ele apenas é disparado quando o elemento perde o focus.
+oninput: Ocorre quando o contendo em texto de um elemento tem sido mudado na interface.
+
+
+#Bind
+
+Dentro do FormularioCadastro
+o evento de onChange chama o método handleMudancaTitulo associa (para associar usa o bind)
+para associar com o this 
+______________________________________________
+05. CONTROLANDO O ESTADO E A RENDERIZAÇÃO
+
+
+Como o this do JS é dinâmico e como lidar com isso
+
+Referências para funções e injeção de dependências
+
+Associando referências através do bind
+bind 
+
+Atributo props dos componentes React
+Estado e Props são atributos 
+
+Props para configuração de componentes e State armazenando estado/valores!
+State: Serve para guardar valores/estado que podem vir a mudar com a
+interação do usuário com o componente, tendo efeito na renderização
+do mesmo, o state pode ser passado como props!
+
+Props: Valores para a configuração de um componente, essas props
+são passadas pelo elemento acima (que utiliza o componente que irá
+receber) e são imutáveis, utilizado para a comunicação de componentes.
+
+
+Passando propriedades para elementos filhos
+
+
+#Função de renderização render() que fica dentro do arquivo App.js
+Não podemos chamar o render direto porque ele é um método especial e
+quem renderiza ele é o React
+
+Todo componente tem dois atributos básicos, o props que é a propriedade e vem pelo Construtor
+e tem o State, que é uma propriedade especial, que é gerenciada pelo React, toda vez que ela é atualizada o React vai chamar o método render desse componente que foi alterado o estado dele
+
+Não pode chamar o State diretamente também, tem que chamar um assessor this.setState
+tem que passar qual é o novo estado desse componente
+
+o estado dele sempre vai coemçar como um objeto this.state = {}
+
+o setStates vai atualizar o estado;
+
+
+
+___________________________________________
+
+REDUX
+É uma lib para gerenciamento de estado
+
+REACT ROUTER
+É uma lib pra lidar com acesso a rotas das aplicações
+
+REACT INTL
+Disponibiliza vários componentes para manusear datas e números
+
+REACT DevTools 
+Uma extensão do Google Chrome com diversas ferramentas de debug.
+
+_______________________________
+
+export default class ContaClicj extends React.Component {
+constructor(){
+super():
+this.state = {
+clicks: 0
+}
+}
+
+O construtor é um método especial para criar e inicializar um objeto criado a partir de uma classe.

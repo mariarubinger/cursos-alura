@@ -1,0 +1,259 @@
+IMERSÃO REACT NEXT.JS
+React, Styled Components e Next.js
+Alura - Mario Soutinho, Juliana Amoasei e Paulo Silveira
+25/01/2021 a 29/01/2021
+
+APLICAÇÃO: ALURA QUIZ!
+
+O React:
+É uma ferramenta para construir interfaces que precisam de dinamismo;
+Que tem muita atualização;
+É uma biblioteca que resolve os problemas de DOM que tem no js;
+Refresh que atualiza automaticamente;
+Cara de aplicação de celular;
+Através dos Componentes que conseguimos fazer a atualização
+da página com refresh.
+
+________________________________________________________
+
+>>> AULA 01 <<<
+
+Vamos utilizar o Next.js for Vercel que é um framework
+The React Framework for Production (pronto pra produção)
+
+O NEXT tem dentro dele varias funcionalidades
+ele vai juntar o CSS, o bundle,
+transpilar, o deploy e o previewe.
+
+
+Criar projeto novo com o template do styled components
+
+Comando:
+npx create-next-app --example with-styled-components
+
+cd mariaquiz
+yarn dev
+
+Precisa ter o node js instalado na sua máquina 
+14.15.3 LTS
+
+node --version v14.15.0
+
+npm --version v6.14.8
+
+
+O Yarn package faz a mesma coisa que o npm
+
+
+
+>>>>>     tag function  `` 
+
+Não pode criar nenhum arquivo dentro da pasta pages
+
+________________________________________________________
+
+>>> AULA 02 <<<
+
+*
+Next / head
+
+
+*
+no terminal você coloca
+yarn install OU npm install
+esse comando vai aparecer a pasta node_modules
+
+*
+Linter
+O JS tem ferramentas pra gente fazer padronização
+ESLint : https://eslint.org/docs/user-guide/getting-started
+
+Comando:
+yarn add eslint --dev
+
+Criar no arquivo package.json no "scripts"
+    "eslint:init": "eslint --init"
+	"Lint": "esLint --fix"
+
+Padrão de estilização de Projeto: muitos projetos hoje em dia utiliza o
+guia padrão do Airbnb
+
+Apagar o arquivo package lock e fazer o comando yarn install
+Apagou pois já tem o arquivo yarn.lock
+
+https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
+  "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+
+
+No Next tudo que você cria na pasta pages vira uma página nova
+
+*
+ROTAS
+router manda para a próxima página
+import { useRouter } from 'next/router'; ISSO É DO NEXT
+
+*
+State
+é um estado do componente
+________________________________________________________
+
+>>> AULA 03 <<< CRIANDO A QUIZ E UMA API 
+
+Todos os componentes que foram criados até aqui são puramente React.
+
+Lib que ajuda a tarzer algo mais automatico- algo que lembra uma tipagem
+é uma Lib que garante tudo q recebe de props sejam dos tipos previstos
+não é obrigatorio mams se quiser é uma boa pratiaca
+Comando
+yarn add prop-types
+
+
+Arquivo quiz.js
+
+ {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
+
+as {} de fora é do react e as de dentro do Javascript
+
+
+o map sempre retorna alguma coisa
+pra uma array de resultados
+
+
+*
+CICLO DE VIDA 1:10
+
+O ciclo de vida do componente, ele é montado na tela, ele faz o que tem que fazer e é desmontado da tela;
+Quando um componente é montado, quando é atualizaado e quando o componente é desmontado (vai sair da tela);
+
+
+  // [React chama de: Efeitos || Effects]
+
+um hook especifico pra substituir essa parte da atualização
+que será o useEffect >>>> React.useEffect
+	
+  // o componente nasce === didMount
+  // o componente atualizado === willUpdate
+  // o componente que vai morrer === willUnmount
+
+________________________________________________________
+
+>>> AULA 04 <<< QUIZ, PONTUAÇÃO E APIs COM Next.js
+
+Salbar as respostas
+
+Colocar mensagem de que acertou ou errou
+
+
+No arquivo quiz.js
+invés disso pra contar quantos perguntar o usuário acertou:
+
+         {results.reduce((somatoriaAtual, resultAtual) => {
+            const isAcerto = resultAtual === true;
+            if (isAcerto) {
+              return somatoriaAtual + 1;
+            }
+            return somatoriaAtual;
+          }, 0)}
+
+pode ser feito assim:
+
+     {results.filter((x) => x).length}
+
+Ele filtra na array os que são true, separa em uma nova array e conta quantas que tem
+
+
+
+        /* "primary": "#FB3640",
+        "secondary": "#c62828",
+        "mainBg": "#640207",
+        "contrastText": "#FFFFFF",
+        "wrong": "#247BA0",
+        "success": "#4CAF50" */
+
+
+feature do Next.js:
+API dentro do projeto
+Cria uma pasta api e um arquivo db.js
+
+lambida server
+
+dentro voce passa renders para sua requisição
+
+
+
+________________________________________________________
+
+>>> AULA 05 <<< PÁGINAS DINÂMICAS, ANIMAÇÕES E LOTTIE
+
+https://aluraquiz-css.omariosouto.vercel.app/
+
+.replace(/\//g,'')
+.replace('https:','')
+.replace('.vercel.app','')
+
+aluraquiz-css.omariosouto
+nesse vai separar em dois objetos
+.split('.')
+após o split ficará uma array ["aluraquiz-css", "omariosouto"]
+
+*
+O Next.js na sua essencia te ajuda no ROTEAMENTO
+
+(Server-side-Rendering)
+
+pega aplicações criadas em Next.js
+faz a pré redenrizar as páginas por padrão
+já vai gerar com o mínimo de javascript
+
+
+nosso arquivo [id].js
+vai carregar uma página ao lado do servidor
+
+
+*
+Requisição para APIs Externas
+
+
+fetch
+
+Promise ela é otimizada para trabalhar com o js
+
+A promesa pode dar certo ou pode dar errado;
+
+fetch
+.then
+.catch
+
+
+
+.then PRA QUANDO DER CERTO
+o then sempre espera um callback
+
+
+.catch PRA QUANDO DER ERRADO E A GNT VAI CONSEGUIR RESGATAR O ERRO E TRATAR
+
+
+HTTP STATUS DOGS - lista pra saber o status
+200 é OK
+
+
+*
+Criar pasta Link
+para não ter o reload
+
+*
+Animação
+FRAMER MOTION
+https://www.framer.com/motion/
+
+Primeiro passo, instalar a biblioteca no terminal
+Comando:
+yarn add framer-motion
+
+
+
+https://lottiefiles.com/
+
+
+
+

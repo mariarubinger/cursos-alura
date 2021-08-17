@@ -1,0 +1,30 @@
+https://cursos.alura.com.br/js-linter-c304
+
+Comando:
+npx eslint --init
+
+1) To check syntax, find problems, and enforce code style
+
+2) JavaScript modules (import/export) 
+
+3) React
+
+4) No (se não for usar TypeScript)
+
+5) Browser
+
+6) Use a popular style guide
+(se fosse em um projeto já pronto seria a Inspect your JavaScript file(s))
+
+7) Airbnb
+
+8) JavaScript (formato que vai salvar)
+
+9) Yes 
+
+É de desenvolvimento, não é algo que vai pra produção.
+
+
+Baixar extensão do VSCode:
+ESLint   
+

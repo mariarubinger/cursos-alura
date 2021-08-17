@@ -1,0 +1,200 @@
+>>> React: Hooks, Contextos e boas práticas <<<
+22/01/2021
+
+entre {} posso adicionar código JS
+
+______________________________________________
+01.ENTENDENDO O PROBLEMA
+
+#Pensando sobre organização
+Sabemos que a abordagem do React de componentizar o layout do
+site é uma forma poderosa de reutilizamos código dentro do mesmo
+projeto e entre diferentes projetos.
+
+Pensando nisso, como devemos organizar os componentes para que
+seja fácil compartilhar eles entres diferentes projetos?
+
+O ideal é colocar todos os arquivos relacionados a um mesmo
+componente em uma única pasta.
+Ao fazermos isso podemos apenas copiar essa pasta de um projeto
+para outro para reutilizamos nosso componente.
+Nesse caso inclusive arquivos de imagens, estilos e fontes
+devem estar dentre da pasta do componente.
+
+#Criando formulários
+formulário de entrega
+
+Boas práticas de UX ao trabalharmos com formulários
+
+Por que separar um formulário em muitas partes
+
+
+______________________________________________
+02.SEPARANDO FORMULÁRIOS
+
+#Renderização condicional
+
+No arquivo FormularioCadastro
+
+
+Como o JSX não possui todas as funcionalidades do JavaScript,
+só conseguimos fazer renderização condicional se chamarmos uma
+função a partir do JSX.
+A renderização condicional faz com que um componente exiba um
+elemento ou não dependendo de uma condição especifica.
+
+
+#Injeção de dependências
+
+#Problemas com o SwitchCase
+Vai ter um caso para cada condicional
+Se tiver por exemplo 10 casos vai ter case ate 10 e fica muito confuso
+
+  function formularioAtual(etapa) {
+    switch (etapa) {
+      case 0:
+        return <DadosUsuario aoEnviar={proximo}/>;
+      case 1:
+        return <DadosPessoais aoEnviar={proximo} validarCPF={validarCPF} />;
+      case 2:
+        return <DadosEntrega aoEnviar={aoEnviar}/>;
+      default:
+        return <Typography>Erro ao selecionar formulário!</Typography>
+    }
+  }    
+  
+
+Trocar essa estrutura de cima por um ARRAY:
+
+  const formularios = [
+  <DadosUsuario aoEnviar={proximo}/>,
+  <DadosPessoais aoEnviar={proximo} validarCPF={validarCPF} />,
+  <DadosEntrega aoEnviar={aoEnviar}/>,
+  ];
+
+  function proximo(){
+    setEtapaAtual(etapaAtual + 1);
+  }
+
+  return <>{formularios[etapaAtual]}</>;
+ }
+
+
+Assim fica a manutenção mais fácil.
+
+______________________________________________
+03.CONTROLANDO CICLO DE VIDA
+
+#Trabalhando com estados
+
+
+
+#Código assincrono
+
+function Pessoa(){
+    const [idade, setIdade] = useState(25);
+
+    function aniversario(){
+        setIdade(idade+1);
+        console.log(idade);    
+    }
+
+    return(<>....</>);
+}
+
+Veremos o valor 25, já que a função setIdade é assíncrona e
+o componente não irá esperar a execução dela antes de ir para
+a próxima linha.
+
+
+#useEffect
+Ele funciona como os 3 métodos: componentDidMount, componentDidUpdate e componentWillUnmount
+Ele vai ser executado assim que nosso componente for montado,
+logo antes dele renderizaar pelo react.
+
+
+#Stepper e finalização do formulário
+Stepper é um componente visual do material ui
+Stepper é um elemento de progressão, ele vai falar quantas etapas a
+gente tem e qual está ativo
+
+______________________________________________
+04.CONTEXTOS E PROVIDERS
+
+#Funções de validação
+
+função de validação de CPF vamos criar um arquivoo separado
+e na pasta models
+
+
+#Reutilizando regras de validação
+
+onBlur valida quando a pessoa termina de digitar
+onChange valida durante ela digita
+
+
+#Diminuindo responsabilidade
+
+Da maneira que temos nosso componente FormularoCadastro até esse momento ele recebe algumas propriedades que ele não faz nada com elas, o único que ele faz é repassar essas propriedades para os componentes filhos dele.
+
+Essa maneira de trabalhar com propriedades é chamada de prop drilling e é considerada uma má prática. Reflita sobre o problema e assinale a alternativa que mostra o problema com essa abordagem.
+
+Esse acoplamento muito forte entre os componentes dificulta a reutilização deles.
+
+
+#useContext
+
+Para ficar mais fácil de reutilizar as validações dele,
+vamos usar o useContext
+
+
+Ele conhecer uma propriedade que ele mesmo não usa é uma má prática no react
+Exemplo: 
+function FormularioCadastro({ aoEnviar, validacoes }) {
+  const [etapaAtual, setEtapaAtual] = useState(0);
+  const [dadosColetados, setDados] = useState({});
+
+
+Vamos retirar esse validacoes;
+
+vamos colocar o validaçoes dentro de um contexto;
+
+Um contexto é uma forma da gente criar um grupo de dados ou de
+funcionalidades que queremos transmitir pra vários componentes;
+
+
+cria esse contexto de validação em um arquivo separado
+ValidacoesCadastro
+
+criei um provedor que vai fornecer as informações para quem estiver
+dentro dele, independente se está em um nível diretamente abaixo,
+como o formulário de cadastro, ou se está dentro do meu formulário
+de cadastro, sendo um filho do meu formulário de cadastro.
+Não importa. Ele vai buscar esse contexto independente da hierarquia,
+vai subir até onde o contexto provider estiver, para achar as
+informações que ele precisa.
+
+
+??DÚVIDAAAAAA??
+
+Usando contextos no React para resolver o problema de prop drilling
+
+?????
+
+______________________________________________
+05.HOOKS CUSTOMIZADOS
+
+#Valores default
+
+
+
+
+#Hooks customizados
+
+A gente pode criar um proprio Hooks
+tendo a lógica executada
+
+Todo hook tem que iniciar com a palavra "use"
+
+
+

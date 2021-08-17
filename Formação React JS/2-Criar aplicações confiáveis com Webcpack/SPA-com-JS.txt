@@ -1,0 +1,100 @@
+>>> JS na Web: Criando uma SPA com JavaScript puro <<<
+11/01/2021
+
+01.MÓDULOS
+
+#Preparando o ambiente
+1. Instalar o Node JS
+2. Entrar na pasta server-petshop e baixar o npm install e depois npm start
+
+Same-origin policy
+
+Resolvendo o CORS
+Acessa o site npmjs.com e procura por live-server
+Na pasta SPA-COM-JS digita o Comando: npm i live-server OU
+npm install -g live-server (no meu caso, usei esse)
+Com isso vamos bloquear os dados
+
+____________________________________________
+02.CONHECENDO O WEBPACK
+
+Arquitetura modular
+Todos os nossos arquivos vão ser transformados em módulos.
+
+
+
+WEBPACK é uma ferramenta que pega todos os arquivos da aplicação e ele vai fazer uma junção dos arquivos
+
+Por padrão o webpack só entende arquivos JavaScript.
+Para ele "entender" outras extensões de arquivos como .css e imagens.
+Devemos instalar e configurar os loaders, são eles que irão converter os arquivos em módulos válidos.
+
+
+É muito utilizada nos grandes frameworks 
+Gerenciamento de dependências
+
+
+Site: webpack.js.org
+Primeiro vai remover o npm da pasta SPA-COM-JS
+Comando: npm uninstall -g live-server
+
+Comando: npm install --save-dev webpack webpack-cli
+Em seguida, criar o arquivo de configuração para continuar nosso projeto de modulação
+Arquivo webpack.config.js nesse arquivo vai todas as configurações, vai ser processado pelo nodejs
+
+
+04 Criando DevServer
+Comando: npm install --save-dev webpack-dev-server
+
+Site: webpack.js.org
+HtmlWebpackPlugin
+Comando: npm install --save dev html-webpack-plugin
+
+06 Carregando o CSS
+Loaders: convertem os arquivos em módulos válidos. 
+outras extensões de arquivos como .css e imagens.
+
+baixar as dependencias 
+use: style-loader
+css-loader
+
+O webpack vai ser responsável pelo css
+
+
+loader: "file-loader"
+use: html-loader
+
+
+npm run build
+
+____________________________________________
+03. COMPONETIZANDO A TABELA
+
+HTML para JS
+Vai usar apenas um arquivo de HTML
+
+
+
+
+Criando a tabela
+
+
+
+
+Evento no botão
+
+
+
+____________________________________________
+04. CRIANDO ROUTER
+
+
+
+
+
+____________________________________________
+05. FINALIZANDO OS COMPONENTES
+
+
+
+

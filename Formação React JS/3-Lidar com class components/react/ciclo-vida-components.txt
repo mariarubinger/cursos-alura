@@ -1,0 +1,138 @@
+>>> React: Ciclo de vida dos componentes <<<
+18/01/2021
+
+______________________________________________
+01. DELETANDO UM CARD
+
+#Importando SVGs
+
+Pode ser como componente 
+
+Esse tipo de importação:
+import {ReactComponent as DeleteSVG} from "../../assets/img/delete.svg";
+Se não tiver usado o create-react-app pra criar o projeto, vai ter que baixar o SVGR (transform SVGs into React components)
+
+ou como imagem
+<img src="" />
+
+
+#Deletando cards
+
+Adicionar evento onClick no DeleteSVG
+
+
+#Proriedades dos componentes
+
+Propriedades são imutáveis e isso nos garante que ao passarmos
+um valor para um objeto ele não será alterado.
+
+Ao recebermos uma propriedade dentro de um objeto não podemos alterar ela pois ela é imutável.
+
+______________________________________________
+02.CRIANDO LISTA DE CATEGORIAS
+
+#Criando lista de categorias
+
+
+#Stateful e Stateless Components
+
+Statefull é componente  que tem estado interno;
+gerencia e distribui estado entres diferentes partes do nosso sistema.
+
+Stateless é um componente sem estado;
+não guarda nenhum estado interno e tem sua renderização definida
+apenas pelas propriedades que recebe;
+(exemplo: CardNota) - recebe informação mas não lida com essa gestão,
+Devemos sempre priorizar componentes stateless
+
+
+#Adicionando categorias dinamicamente
+
+
+#Quando usar state
+No decorrer do projeto, utilizamos state e props para compor a lógica da nossa aplicação.
+Props são propriedades que passamos de um componente para outro quando o componente filho precisa de uma informação que o componente pai possui.
+Já o state é uma forma de salvar informações que serão observadas pelo Virtual Dom.
+Qual é um bom exemplo de uso do State?
+
+   this.state = {
+            nomes: [],
+        };
+
+Um array de nomes que será preenchido pelos dados que vierem de uma API.
+Como o estado serve para guardar valores que podem vir a mudar com a interação do usuário com o componente (por exemplo, ao consumir e alterar os dados que existem na API) e que tem efeito na renderização do mesmo (para que o Virtual DOM possa se encarregar de recarregar esse componente se necessário), esse é um ótimo uso!
+
+______________________________________________
+03.SEGUINDO PADRÕES
+
+
+#Seguindo padrões
+#Adicionando categorias aos cards
+
+Preferimos guardar informações mutáveis dentro do state porque ao
+fazermos isso o React cuida de fazer uma nova renderização do
+componente, e vemos as informações serem atualizadas no DOM.
+Ao renderizar um elemento o React também renderiza novamente os elementos filhos daquele o qual o state foi alterado.
+
+
+#Problemas da estrutura atual
+
+Os Componentes são a visualização dos meus dados.
+
+
+
+Dados devem ser armazenados em outra entidade.
+
+
+Criar duas novas classes, que vai ser uma classe do JS:
+Categorias (vai guardar informações de categorias)
+Notas (vai guardar informações de notas)
+
+______________________________________________
+04.OBSERVABLE
+
+#Criando fonte de dados
+
+
+
+
+#O padrão Observable
+
+#Criando lista de inscritos
+
+#Elevando o state
+Colocando a informação em um elemento pai comum aos componentes
+que precisam da informação o compartilhamento fica mais fácil.
+
+______________________________________________
+05.CICLO DE VIDA DOS OBJETOS
+
+O map funciona dentro de um array
+
+
+>>Métodos do ciclo de vida como o ComponentDidMount e o ComponentWillUnmount
+
+#componentDidMount 
+
+Todos componentes que criamos para uma aplicação React são
+gerenciados pelo próprio React, porém ele nos da acesso para
+colocarmos a execução de código em determinados momentos do
+ciclo de vida do React. Um desses pontos de acesso é o método
+componentDidMount.
+Quando o componentDidMount é chamado e o que podemos fazer dentro
+desse método?
+
+Esse método é chamado assim que o componente é criado e está
+pronto, é dentro desse método que devemos iniciar chamadas para
+API ou executar código que tem efeito colateral.
+Sim, nesse momento do ciclo de vida o React já nos deixar chamar
+a função setState e dessa maneira podemos atualizar o componente
+com o retorno de uma chamada para APIs por exemplo.
+
+
+#Referências pra funções e bind
+
+
+
+
+

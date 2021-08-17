@@ -1,0 +1,99 @@
+>>>Fetch API: Consumindo uma API Rest com JavaScript<<<
+06/01/2021
+
+1.Exibindo dados dinamicamente com JS
+
+2.Consumindo dados da API
+#Preparando o ambiente
+
+2.1 Baixar o Node JS
+
+___________
+2.2 Instalar o POSTAMAN
+Serve para consumir nossas rotas.
+
+https://www.postman.com/downloads/
+Meu login é pelo Gmail rubinger.maria@gmail.com
+Meu user mariarubinger
+
+___________
+2.3 Requisições com POSTMAN
+
+Verbos HTTP: GET, POST, PUT, PATCH
+Usamos ele para comunicar com o servidor
+
+Primeiro precisamos entrar na pasta onde está nossa API (server-petshop-master) e instalar as dependências 
+Comando: npm install (usando a versão 10 do node) 
+
+Utilizar o postman para fazer requisições:
+No POSTMAN coloca GET e no site coloca http://localhost:4000/clientes
+
+___________
+2.4 JS assíncrono com método fetch (buscar)
+
+> por padrão o fetch já faz um GET <
+
+fetch - Utilizar fetch para fazer comunicação com a API
+.then
+json 
+.json é um formato - vai transformar em uma resposta mais visível
+
+Trabalhar com promises no JavaScript
+___________
+2.5 Exibindo os dados do cliente
+
+
+___________
+2.6 Consumindo os dados da API 
+
+
+
+3. Criando um cliente : utilizabdo o verbo HTTP - POST
+
+http://localhost:4000/clientes/cliente
+
+
+Verbo HTTP : method
+Formato do conteúdo que vamos enviar : headers
+Conteúdo do que vamos enviar : body
+
+Primeiro indicamos qual requisição iremos fazer através do verbo HTTP, depois indicamos qual o formato de conteúdo que enviamos para a API e por fim enviamos o conteúdo.
+
+
+- Também foi feita também a validação do CPF
+
+
+4. Deletando um cliente com POSTMAN 
+Deletar um cliente com verbo HTTP DELETE
+Vamos criar uma funcionalidade pelo POSTMAN para deletar um cliente
+
+Verbo DELETE
+http://localhost:4000/clientes/cliente/${id}
+http://localhost:4000/clientes/cliente/COLOQUE AQUI O ID QUE QUER DELETAR
+
+pra mostrar que o ID não é uma string usamos o ${}
+
+Criando a função de deletar cliente
+
+A função deletaCliente() recebe um id, que é como identificamos o cliente, o método fetch() se comunica com a API e o method recebe o verbo HTTP, que indica qual ação é aplicada.
+
+
+5. Editando dados dos Clientes
+Criar um botão de editar
+
+Evento no formilário de edição
+
+evento PUT vai ser responsável por fazer a atualização de dados
+
+
+*O que a gente quer agora é encontrar a localização de cada cliente que queremos editar
+const pegaURL = new URL( window.location )
+const id = pegaURL.searchParams.get(‘id’)
+
+Criamos um novo objeto URL que é capaz de nos dizer qual o endereço da página que estamos. Por meio da propriedade searchParams conseguimos acessar o método get e selecionar o id que vemos na url.
+
+
+6. Mensagem para o usuário 
+No arquivo edita.cliente.js
+
+  //indica que não é um template literals ${}

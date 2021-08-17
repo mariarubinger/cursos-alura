@@ -1,0 +1,82 @@
+PARTE II ORIENTAÇÃO A OBJETOS
+>>>Terminologia<<<
+
+#Namespaces
+Um recipiente que permite empacotar todas as funcionalidades em um nome único e específico da aplicação.
+
+
+#Classe
+Define as características do objeto. Uma classe é uma definição modelo das propriedades e métodos de um objeto.
+
+
+#Objeto
+Um exemplar de uma classe.
+
+
+#Atributo
+Uma característica do objeto, como cor, modelo, fabricante se estivemos representando um veículo, por exemplo.
+
+
+#Método
+Uma ação do objeto, como ligar, desligar, frear se estivemos representando um veículo, por exemplo. É uma subrotina ou função associada a uma classe.
+
+
+#Construtor
+Um método chamado assim que um novo exemplar do objeto for criado. Ele geralmente tem o mesmo nome da classe que o contém.
+
+
+#Herança
+Uma classe pode herdar características de outra classe.
+
+
+#Encapsulamento
+Uma maneira de agrupar os dados e os métodos que usam os dados.
+
+Uma maneira de agrupar os dados e os métodos que usam os dados.
+//proteger o saldo, proteger o cliente, vai utilizar o get, o set
+
+
+#Abstração
+A conjunção de herança complexa, métodos, propriedades de um objeto devem refletir adequadamente um modelo da realidade.
+
+Classe Abstrata - nunca pode ser instanciada diretamente, mas ela pode ser herdada
+Essa classe serve apenas como base para outras classes que irão herdar seu comportamento, suas características
+Classes abstratas são pensadas de forma que elas apenas possam ser herdadas por outras, elas nos ajudam a criar abstrações no código e a compartilhar código entre outras classes
+
+Método Abstrato
+É um Método Abstrato: não é feito para ser chamado direto, é um método para ser sempre subscrito
+métodos abstratos devem ser sobrescritos pelas classes filhas
+
+
+#Polimorfismo
+Diferentes classes podem definir o mesmo método ou propriedade.
+A gente trata objetos diferentes de maneiras similares.
+O SistemaAutenticacao serve tanto pra classe Gerente, Diretor, (para reutilizar o código)
+
+
+#Ducky Type - fraca tipagem como o JS
+duck typing - não interessa o tipo do objeto, o que importa é se ele tem a propriedade que eu quero usar
+
+
+//Ser autenticavel significa ter a propriedade "senha".
+//Ser autenticavel significa ter o método autenticar
+//o método abstrato que recebe uma senha vai melhorar o encapsulamento e deixar o vocabulário melhor
+//método estático não precisa criar uma instância pra chamr esse método, pode chamar direto
+
+
+//instanciar = criar um objeto de determinada Classe
+
+
+
+#operador in
+O operador in retorna  true se a propriedade especificada estiver no objeto especificado ou na sua cadeia de protótipo (prototype chain) desde objeto.
+
+prop in object
+(onde prop é Um string ou símbolo representando o nome de uma propriedade ou o índice de um array (não-símbolos serão trazidos para strings) e object é um Objeto para verificar se este (ou sua cadeia de protótipo) contém a propriedade com o nome especificado.)
+
+#operador instanceOf
+O operador instanceof testa se um objeto tem, em seu prototype, a função construtora.
+
+objeto instanceof construtor (onde objeto é o objeto a ser testado e constructor é a Função construtora a ser verificada.
+
+É um operador. Compara o tipo de uma variável a uma classe.

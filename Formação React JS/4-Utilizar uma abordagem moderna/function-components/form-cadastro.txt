@@ -1,0 +1,190 @@
+>>> React:Function Components, uma abordagem moderna <<<
+20/01/2021
+
+class App extends Component {
+  render(){
+    return (
+      
+      //o Fragment vai servir como elemento pai do component App
+      //o Fragment vai encapsular todos os elementos filhos
+      <Fragment>
+        <h1>Formulário de cadastro</h1>
+        <FormularioCadastro/> 
+      </Fragment>
+      
+    );
+  }
+}
+
+export default App;
+
+______________________________________________
+01.INICIANDO COM FUNCTIONS COMPONENTS
+
+
+A function component deve iniciar com letra maiuscula e 
+retornar uma arvore de renderização, retornar um JSX.
+
+#Componentes funcionais
+Usa uma função para declarar um componente
+
+#Primeiro Function Component
+
+function component é são mais simples do que em um class
+component. Isso porque, sem usarmos o state e outros
+métodos de ciclo de vida do react um function component
+é apenas uma função JS simples que retorna um elemento JSX.
+
+#Facilitando a prototipação
+
+MATERIAL UI
+https://material-ui.com/
+
+Comando:
+npm install @material-ui/core
+
+Pra verificar as vulnerabilidades, fazer o Comando:
+npm audit fix
+______________________________________________
+02.UTILIZANDO O MATERIAL UI (para fazer a interface)
+
+Layout dos componentes
+
+#Utilizando a documentação lib
+
+TextField API
+
+
+#Layout e containers
+
+Passamos parâmetros para os componentes do Material UI
+a partir das propriedades do objeto.
+Repare que essa biblioteca cria componentes extremamente
+customizáveis a partir de um conjunto de propriedades.
+Na hora que você estiver criando seus componentes pense
+em usar propriedades de maneira que eles sejam mais
+reutilizáveis.
+
+
+#Tiporafia e Switch
+
+Componentes > Entradas > Interruptor
+
+Para exibir dados, no caso do nosso titulo h1
+Componentes > Exibição de dados > Tipografia
+
+npm install @material-ui/core
+
+Instalar fonte via NPM
+Comando:
+npm install fontsource-roboto
+
+______________________________________________
+03. FORMS E HOOKS
+
+
+Junto com os componentes funcionais vamos usar o Hooks
+
+#Formulários não controlados
+Uma das desvantagens: ele nao está fazendo nenhum tipo de validação nos inputs
+
+
+Funções não tem atributos pq elas não sao classes
+e funções não deveriam guardar estado
+
+#UseState
+
+Ao utilizamos o hook de useState indicamos para o React que aquele
+componente quer guardar estado. Para isso são devolvidas duas
+informações, a primeira é a referência para o valor do estado atual
+e a segunda é a função que altera esse estado.
+
+Precisamos dessa separação para que o React consiga fazer o gerenciamento do componente e chamar o o ciclo de renderização quando o estado for alterado.
+
+Com essa separação o React consegue fazer a sincronização entre as alterações de estado e o ciclo de vida do componente.
+Por isso que nunca devemos fazer a alteração do estado diretamente.
+
+
+#Assincronicidade e validação
+
+
+______________________________________________
+04. REGRAS DOS HOOKS
+
+#Regras dos hooks
+Usar hooks apenas no nível superior (o da própria função),
+ou seja, não usar em condicional:
+
+if(true){
+}
+
+OU
+
+for(let i=1; i<10; i++){
+}
+
+OU
+
+while(false){
+}
+
+
+Não usar useState dentro da condicional if
+
+
+useState é o mais comum no react 
+mas existe varios outros como o useEffect
+
+
+#Finalizando gerenciamento formulário
+
+
+#Recebendo propriedades
+
+Aqui que vamos deixar o formulário de uma maneira que vai ser
+reaproveitável em outros projetos
+
+
+
+#Técnicas com JS
+
+Ao recebermos propriedades dentro de um function component do
+React, elas ficam salvas em um objeto que é o primeiro
+parâmetro passado para essa função.
+
+function Nota(props){
+    return(
+        <>
+            <h1>{props.titulo}</h1>
+            <h2>{props.subtitulo}</h2>
+        </>
+    )
+}
+
+Qual é a outra forma de declaração que podemos usar para
+receber propriedades e atribuí-las diretamente a variáveis?
+
+function Nota({titulo, subtitulo}){...}
+Exatamente, essa técnica é chamada de desconstrução de objetos
+e podemos fazer ela com Arrays também.
+
+______________________________________________
+05. TRATAMENTO DE ERROS
+
+#Exibindo erros no Material UI
+
+Mostrar um erro quando tiver mais de 11 dígitos no CPF
+
+Função de validação pra receber o estado
+Vai começar a validação quando a pessoa mudar de input;
+Evento de onBlur
+
+
+
+#Criando uma função de validação
+Poderia extrair para um componente separado, mas nesse caso vamos
+colocar no App.js mesmo
+
+
+Ao criarmos a função de validação do nosso formulário, preferimos deixar ela fora do componente formulário. Qual o beneficio de organizarmos nosso código dessa maneira?
+Recebendo a função de validação por propriedades conseguimos fazer com que nosso formulário seja mais flexível.
